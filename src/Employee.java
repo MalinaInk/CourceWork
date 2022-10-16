@@ -29,17 +29,8 @@ public class Employee {
     public int getId() {
         return id;
     }
-
-    public static int getCounter() {
-        return counter;
-    }
-
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public static void setCounter(int counter) {
-        Employee.counter = counter;
     }
 
     @Override

@@ -1,10 +1,11 @@
 public class Main {
     private static Employee[] employees = new Employee[10];
-//Объявляем массив вне метода как поле, чтобы сделать его видимым
+
+    //Объявляем массив вне метода как поле, чтобы сделать его видимым
 //static, т.к. метод main - static
     public static void main(String[] args) {
         //в методе - заполняем
-        employees[0] = new Employee ("Тиунов Георгий", 35_000);
+        employees[0] = new Employee("Тиунов Георгий", 35_000);
         employees[1] = new Employee("Сафуанов Артем", 28_000);
         employees[2] = new Employee("Булдаков Илья", 42_000);
         employees[3] = new Employee("Горяева Дарья", 58_000);
@@ -15,17 +16,18 @@ public class Main {
         employees[8] = new Employee("Осипов Андрей", 39_000);
         employees[9] = new Employee("Ганич Евгения", 51_000);
         System.out.println("Сумма всех зарплат: " + calculateSumSalary());
-        System.out.println("Средняя зарплата равна " + calculateSumSalary()/employees.length);
+        System.out.println("Средняя зарплата равна " + getAverageSalary(calculateSumSalary(), employees));
         System.out.println("Сотрудник с максимальной зарплатой: " + getEmployeeWithMaxSalary());
         System.out.println("Сотрудник с минимальной зарплатой: " + getEmployeeWithMinSalary());
         printAllEmployees();
+        printAllFullName();
 
     }
 
     // отдельный статический метод, который работает со статическим полем, объявленным выше
-    public static int calculateSumSalary() {
+    private static int calculateSumSalary() {
         int sum = 0;
-        for (Employee employee: employees) {
+        for (Employee employee : employees) {
             //проверка на null
             if (employee != null) {
                 sum += employee.getSalary();
@@ -34,7 +36,12 @@ public class Main {
         return sum;
     }
 
-    public static Employee getEmployeeWithMaxSalary() {
+    private static int getAverageSalary(int sumSalary, Employee arr[]) {
+        int averageSalary = sumSalary / arr.length;
+        return averageSalary;
+    }
+
+    private static Employee getEmployeeWithMaxSalary() {
         int max = Integer.MIN_VALUE;
         //Задаем минимально допустимое значение внутри типа инт
         Employee targetEmployee = null;
@@ -47,7 +54,7 @@ public class Main {
         return targetEmployee;
     }
 
-    public static Employee getEmployeeWithMinSalary() {
+    private static Employee getEmployeeWithMinSalary() {
         int min = Integer.MAX_VALUE;
         Employee targetEmployee = null;
         for (Employee employee : employees) {
@@ -60,10 +67,19 @@ public class Main {
     }
 
 
-    public static void printAllEmployees() {
-        for (int i = 0; i < 10; i++) {
+    private static void printAllEmployees() {
+        for (int i = 0; i < employees.length; i++) {
             Employee employee = employees[i];
             System.out.println(employee.toString());
         }
     }
+
+    private static void printAllFullName() {
+        for (int i = 0; i < employees.length; i++) {
+            Employee employee = employees[i];
+            System.out.println(employee.getFullName());
+        }
+    }
 }
+
+
