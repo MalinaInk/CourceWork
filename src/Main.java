@@ -21,11 +21,7 @@ public class Main {
         System.out.println("Средняя зарплата равна " + getAverageSalary());
         printAllEmployees();
         printAllFullName();
-
     }
-
-
-
     // отдельный статический метод, который работает со статическим полем, объявленным выше
     private static int calculateSumSalary() {
         int sum = 0;
@@ -46,12 +42,10 @@ public class Main {
         }
         return countEmployees;
     }
-
     private static int getAverageSalary() {
         int averageSalary = calculateSumSalary() / getCountEmployees(employees);
         return averageSalary;
     }
-
     private static Employee getEmployeeWithMaxSalary() {
         int max = Integer.MIN_VALUE;
         //Задаем минимально допустимое значение внутри типа инт
@@ -64,7 +58,6 @@ public class Main {
         }
         return targetEmployee;
     }
-
     private static Employee getEmployeeWithMinSalary() {
         int min = Integer.MAX_VALUE;
         Employee targetEmployee = null;
@@ -76,15 +69,12 @@ public class Main {
         }
         return targetEmployee;
     }
-
-
     private static void printAllEmployees() {
         for (int i = 0; i < employees.length; i++) {
             Employee employee = employees[i];
             System.out.println(employee.toString());
         }
     }
-
     private static void printAllFullName() {
         for (int i = 0; i < employees.length; i++) {
             Employee employee = employees[i];
