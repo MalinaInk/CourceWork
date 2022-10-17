@@ -16,13 +16,15 @@ public class Main {
         employees[8] = new Employee("Осипов Андрей", 39_000);
         employees[9] = new Employee("Ганич Евгения", 51_000);
         System.out.println("Сумма всех зарплат: " + calculateSumSalary());
-        System.out.println("Средняя зарплата равна " + getAverageSalary(calculateSumSalary(), employees));
         System.out.println("Сотрудник с максимальной зарплатой: " + getEmployeeWithMaxSalary());
         System.out.println("Сотрудник с минимальной зарплатой: " + getEmployeeWithMinSalary());
+        System.out.println("Средняя зарплата равна " + getAverageSalary());
         printAllEmployees();
         printAllFullName();
 
     }
+
+
 
     // отдельный статический метод, который работает со статическим полем, объявленным выше
     private static int calculateSumSalary() {
@@ -35,9 +37,18 @@ public class Main {
         }
         return sum;
     }
+    private static int getCountEmployees(Employee employees[]) {
+        int countEmployees = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                countEmployees = countEmployees + 1;
+            }
+        }
+        return countEmployees;
+    }
 
-    private static int getAverageSalary(int sumSalary, Employee arr[]) {
-        int averageSalary = sumSalary / arr.length;
+    private static int getAverageSalary() {
+        int averageSalary = calculateSumSalary() / getCountEmployees(employees);
         return averageSalary;
     }
 
@@ -80,6 +91,7 @@ public class Main {
             System.out.println(employee.getFullName());
         }
     }
+
 }
 
 
