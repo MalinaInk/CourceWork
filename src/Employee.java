@@ -1,5 +1,6 @@
 public class Employee {
     private int salary;
+    private int department;
     private final String fullName;
     //final - значение можно установить только в конструкторе.
     //обезопасить от того, чтобы модифицировать переменную случайно.
@@ -11,8 +12,9 @@ public class Employee {
     //private - относится к полю класса
     private static int counter = 0;
 
-    public Employee (String fullName, int salary) {
+    public Employee (String fullName, int department, int salary) {
         this.fullName = fullName;
+        this.department = department;
         this.salary = salary;
         this.id = ++counter;
         //инкрементируем счетчик, начиная с 1-го отдела
@@ -33,11 +35,19 @@ public class Employee {
         this.salary = salary;
     }
 
+    public int getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
-        return "Зарплата = " + salary +
-                ", Сотрудник = " + fullName +
-                ", Отдел - " + id;
+        return "Сотрудник = " + fullName +
+                ", Отдел - " + department +
+                ", Зарплата = " + salary;
     }
    }
 
